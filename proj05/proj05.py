@@ -11,7 +11,14 @@ def divisors(num):
     :param num: int
     :return: list (int)
     """
-    return 0
+    ans_list = []
+    for n in range (1, num+1):      #n - number that could divide the parameter num
+        print "num =", num, "n =", n
+        if num % n == 0:    #checking to see if n divides into num
+            print "is divisor"
+            ans_list.append(n)  # n goes into num, then add n to ans_list
+
+    return ans_list
 
 def prime(num):
     """
@@ -19,7 +26,21 @@ def prime(num):
     :param num: int
     :return: bool
     """
-    return False
+
+    prime_list = []
+    for n in range (1, num+1):
+        if num % n == 0:    #if one of those numbers is a divisor
+
+            prime_list.append(n)
+            # print "length of prime list is ",
+            len(prime_list)
+    length = len(prime_list)
+    if length == 2:
+        return True
+    else:
+        return False
+
+    # return False
 
 # Part II
 
@@ -30,8 +51,7 @@ def intersection(lst1, lst2):
     :param lst2: list, any type
     :return: list, any type
     """
-    return ["test"]
-
+for 
 # Part III
 
 def find_ab(side1, side2, side3):
@@ -42,7 +62,13 @@ def find_ab(side1, side2, side3):
     :param side3: int or float
     :return: list of 2 ints or floats
     """
-    return [0, 0]
+
+    if side3 > side1 and side3 > side2:
+        return [side1, side2]
+    if side1 > side2 and side1 > side3:
+        return [side2, side3]
+    if side2 > side1 and side2 > side3:
+        return [side1, side3]
 
 def find_c(side1, side2, side3):
     """
@@ -52,7 +78,12 @@ def find_c(side1, side2, side3):
     :param side3: int or float
     :return: int or float
     """
-    return 0
+    if side3 > side1 and side3 > side2:
+        return side3
+    if side1 > side2 and side1 > side3:
+        return side1
+    if side2 > side1 and side2 > side3:
+        return side2
 
 def square(side):
     """
@@ -60,7 +91,7 @@ def square(side):
     :param side: int or float
     :return: int or float
     """
-    return 0
+    return side **2
 
 def pythagorean(a,b,c):
     """
@@ -70,7 +101,10 @@ def pythagorean(a,b,c):
     :param c: int or float
     :return: bool
     """
-    return False
+    if square(a) + square(b) == square(c):
+        return True
+    else:
+        return False
 
 def is_right(side1, side2, side3):
     """
@@ -80,7 +114,12 @@ def is_right(side1, side2, side3):
     :param side3: int or float
     :return: bool
     """
-    return False
+    small_list = find_ab(side1, side2, side3)
+    a = small_list[0]
+    b= small_list [1]
+    c=find_c(side3, side2, side1)
+    ans = pythagorean(a,b,c)
+    return ans
 
 # TESTS
 # Feel free to add your own tests as needed!
