@@ -15,7 +15,7 @@ rest_lowercase = name_rest.lower()
 
 age = raw_input("Enter your age: ")
 if int(age) > 100:
-    print("Congradulations on already celebrating your 100th birthday!")
+    print("Congratulations on already celebrating your 100th birthday!")
 else:
     birthday = raw_input ("Have you had a birthday this year (yes or no)?: ")
 if birthday == "yes":
