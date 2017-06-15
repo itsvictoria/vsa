@@ -6,6 +6,7 @@
 import random
 import string
 
+# letters available
 VOWELS = 'aeiou'
 CONSONANTS = 'bcdfghjklmnpqrstvwxyz'
 HAND_SIZE = 7
@@ -22,6 +23,7 @@ SCRABBLE_LETTER_VALUES = {
 
 WORDLIST_FILENAME = "words.txt"
 
+# uploading scrabble dictionary
 def load_words():
     """
     Returns a list of valid words. Words are strings of lowercase letters.
@@ -76,7 +78,17 @@ def get_word_score(word, n):
     word: string (lowercase letters)
     returns: int >= 0
     """
-    # TO DO...
+     #TO DO...
+    score = 0
+    for letter in word:
+        score += SCRABBLE_LETTER_VALUES [letter]
+    score *= len(word)
+    if len(word) == n:
+        score += 50
+    return score
+
+
+#    lowercase_word = get_word_score.lower
     
 #
 # Make sure you understand how this function works and what it does!
@@ -146,6 +158,12 @@ def update_hand(hand, word):
     returns: dictionary (string -> int)
     """
     # TO DO ...
+    # for n in deal_hand:
+    #     return n * hand
+    #     hand = {}
+    #     display_hand(hand)
+
+
 
 #
 # Problem #3: Test word validity
@@ -161,12 +179,21 @@ def is_valid_word(word, hand, word_list):
     word_list: list of lowercase strings
     """
     # TO DO...
+    #list(word) #separating the letters in the word
+    if word in word_list:
+        for letter in word:
+            if letter not in hand:
+                return False
+            #use update_hand
+        return True
+    return False
 
 def calculate_handlen(hand):
     handlen = 0
     for v in hand.values():
         handlen += v
     return handlen
+
 
 #
 # Problem #4: Playing a hand
@@ -225,6 +252,7 @@ def play_game(word_list):
 #
 # Build data structures used for entire session and play game
 #
-if __name__ == '__main__':
-    word_list = load_words()
-    play_game(word_list)
+# if __name__ == '__main__':
+#     word_list = load_words()
+#     play_game(word_list)
+#player_word = raw_input ()
