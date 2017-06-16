@@ -23,6 +23,11 @@ def comp_choose_word(hand, word_list):
     word_list: list (string)
     """
     # TO DO...
+    get_perms(hand, HAND_SIZE) #choose
+    if get_perms in WORDLIST_FILENAME:
+        return
+
+
 
 #
 # Problem #6B: Computer plays a hand
@@ -47,8 +52,10 @@ def comp_play_hand(hand, word_list):
      hand: dictionary (string -> int)
      word_list: list (string)
     """
-    # TO DO ...    
-    
+    # TO DO ...
+    word_dict =
+    comp_choose_word(hand, word_dict)
+
 #
 # Problem #6C: Playing a game
 #
@@ -80,5 +87,21 @@ def play_game(word_list):
 if __name__ == '__main__':
     word_list = load_words()
     play_game(word_list)
+    user_play = None
 
+    while user_play != "e" or user_play != "n" or user_play != "r":
+        user_play = raw_input("Enter 'n' for new hand, 'r' to play the hand again, or 'e' to exit.")
+        if str(user_play) == "e":
+            print "Okay have a great day!"
+            break
+        if str(user_play) == "n":
+            hand = deal_hand(HAND_SIZE)
+            play_hand(hand,word_list)
+        if str(user_play) == "r":
+            play_hand(hand, word_list)
+    # play last hand
+
+if __name__ == "__main__":
+    wordlist = load_words()
+    play_game(wordlist)
     

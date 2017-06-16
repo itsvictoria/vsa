@@ -235,8 +235,21 @@ def play_hand(hand, word_list):
 
     """
     # TO DO ...
+    word = 0
+    score = 0
+    while word != ".":
+        display_hand(hand)
+        word = raw_input("Please enter a word: ")
 
-if is_valid_word():
+        if is_valid_word(word, hand, word_list):
+            score += get_word_score(word, HAND_SIZE)
+            print "Your score is ", score
+            hand = update_hand(hand,word)
+        # elif word == ".":
+        #     break
+        else:
+            print "Sorry that's not a word."
+
     
 
 
@@ -266,13 +279,20 @@ def play_game(word_list):
 #
 # Build data structures used for entire session and play game
 #
-    user_play = raw_input("Enter 'n' for new hand, 'r' to play the hand again, or 'e' to exit.")
-    if str(user_play) == "e":
-        print "Okay have a great day!"
-    if str(user_play) == "n"
-        deal_hand()
-    if str(user_play) == "r"
-        # play last hand
-    else:
-        user_play
+    user_play = None
 
+    while user_play != "e" or user_play != "n" or user_play != "r":
+        user_play = raw_input("Enter 'n' for new hand, 'r' to play the hand again, or 'e' to exit.")
+        if str(user_play) == "e":
+            print "Okay have a great day!"
+            break
+        if str(user_play) == "n":
+            hand = deal_hand(HAND_SIZE)
+            play_hand(hand,word_list)
+        if str(user_play) == "r":
+            play_hand(hand, word_list)
+    # play last hand
+
+if __name__ == "__main__":
+    wordlist = load_words()
+    play_game(wordlist)
