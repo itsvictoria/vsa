@@ -158,6 +158,11 @@ def update_hand(hand, word):
     returns: dictionary (string -> int)
     """
     # TO DO ...
+    newhand = hand.copy()
+    for letter in word:
+        newhand[letter] = newhand.get(letter,0) - 1
+
+    return newhand
     # for n in deal_hand:
     #     return n * hand
     #     hand = {}
@@ -173,20 +178,23 @@ def is_valid_word(word, hand, word_list):
     Returns True if word is in the word_list and is entirely
     composed of letters in the hand. Otherwise, returns False.
     Does not mutate hand or word_list.
-    
+
     word: string
     hand: dictionary (string -> int)
     word_list: list of lowercase strings
     """
     # TO DO...
     #list(word) #separating the letters in the word
+   # update_hand(hand, word)
     if word in word_list:
         for letter in word:
-            if letter not in hand:
+            if letter not in hand or hand[letter] <= 0:
                 return False
-            #use update_hand
+            hand = update_hand(hand, letter)
         return True
     return False
+
+
 
 def calculate_handlen(hand):
     handlen = 0
@@ -204,7 +212,7 @@ def play_hand(hand, word_list):
     Allows the user to play the given hand, as follows:
 
     * The hand is displayed.
-    
+
     * The user may input a word.
 
     * An invalid word is rejected, and a message is displayed asking
@@ -224,14 +232,20 @@ def play_hand(hand, word_list):
 
       hand: dictionary (string -> int)
       word_list: list of lowercase strings
-      
+
     """
     # TO DO ...
+
+if is_valid_word():
+    
+
+
+
 
 #
 # Problem #5: Playing a game
 # Make sure you understand how this code works!
-# 
+#
 def play_game(word_list):
     """
     Allow the user to play an arbitrary number of hands.
@@ -252,7 +266,13 @@ def play_game(word_list):
 #
 # Build data structures used for entire session and play game
 #
-# if __name__ == '__main__':
-#     word_list = load_words()
-#     play_game(word_list)
-#player_word = raw_input ()
+    user_play = raw_input("Enter 'n' for new hand, 'r' to play the hand again, or 'e' to exit.")
+    if str(user_play) == "e":
+        print "Okay have a great day!"
+    if str(user_play) == "n"
+        deal_hand()
+    if str(user_play) == "r"
+        # play last hand
+    else:
+        user_play
+
